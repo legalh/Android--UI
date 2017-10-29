@@ -1,0 +1,133 @@
+1022-1029
+安卓的UI界面设置
+布局文件：
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/a123">
+
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="55dp">
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_vertical"
+           android:layout_marginLeft="10dp"
+           android:text="Account" />
+       <EditText
+           android:id="@+id/input_message"
+           android:layout_marginLeft="10dp"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:hint="Type your account!"
+           />
+   </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#f0f0f0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="Secret" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:maxLength="20"
+            android:hint="Input your secret!"
+            android:inputType="textPassword"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:text="登陆"
+        android:textSize="25sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        >
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:text="淘宝"
+            android:textColor="#838383"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="天猫"
+            android:textColor="#838383"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+主活动的代码：
+package com.example.thj.loginscreen;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button button1=(Button) findViewById(R.id.button_1);
+        Button button2=(Button) findViewById(R.id.button_2);
+        button1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent1 =new Intent(Intent.ACTION_VIEW);
+                intent1.setData(Uri.parse("http://www.taobao.com"));
+                startActivity(intent1);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(Intent.ACTION_VIEW);
+                intent2.setData(Uri.parse("http://www.tmall.com"));
+                startActivity(intent2);
+            }
+        });
+    }
+}
+
+</LinearLayout>
