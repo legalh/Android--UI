@@ -1,4 +1,4 @@
-1022-1029
+﻿1022-1029
 安卓的UI界面设置
 布局文件：
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,8 +90,9 @@
             android:text="天猫"
             android:textColor="#838383"
             android:textSize="20sp" />
-
-    </RelativeLayout>
+ 
+     </RelativeLayout>
+</LinearLayout>
 
 主活动的代码：
 package com.example.thj.loginscreen;
@@ -130,4 +131,4 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-</LinearLayout>
+
