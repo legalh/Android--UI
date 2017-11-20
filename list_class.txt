@@ -1,0 +1,63 @@
+package com.example.thj.loginscreen;
+
+/**
+ * Created by THJ on 2017/11/18.
+ */
+
+public  class Fruit {
+    private String name;
+    private int imageId;
+
+    public Fruit(String name, int imageId) {
+        this.name = name;
+        this.imageId = imageId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+}
+//这是一个实体类
+
+
+
+
+//这是listview的适配器
+
+package com.example.thj.loginscreen;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
+
+
+public class FruitAdapter extends ArrayAdapter<Fruit> {
+    private int resourceId;
+    public FruitAdapter(Context context, int textViewResourceId,
+                        List<Fruit> objects){
+        super(context,textViewResourceId,objects);
+        resourceId=textViewResourceId;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent){
+        Fruit fruit =getItem(position);
+        View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,
+                false);
+        ImageView fruitImage=(ImageView) view.findViewById(R.id.fruit_image);
+        TextView fruitName =(TextView) view.findViewById(R.id.fruit_name);
+        fruitImage.setImageResource(fruit.getImageId());
+        fruitName.setText(fruit.getName());
+        return view;
+    }
+}

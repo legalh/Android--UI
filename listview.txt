@@ -1,0 +1,63 @@
+package com.example.thj.loginscreen;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Listview extends AppCompatActivity {
+    private List<Fruit> fruitList=new ArrayList<>( );
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_listview2);
+        iniFruits();
+        FruitAdapter adapter =new FruitAdapter(Listview.this,R.layout.fuuit_item,fruitList);
+        ListView listView=(ListView)findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position,long id){
+                Fruit fruit =fruitList.get(position);
+                Toast.makeText(Listview.this,fruit.getName(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void iniFruits(){
+        for(int i=0;i<2;i++){
+            Fruit apple =new Fruit("Apple",R.drawable.ic_launcher);
+            fruitList.add(apple);
+            Fruit banana =new Fruit("pple",R.drawable.ic_launcher);
+            fruitList.add(banana);
+            Fruit mango =new Fruit("Aple",R.drawable.ic_launcher);
+            fruitList.add(mango);
+            Fruit orange =new Fruit("Ap",R.drawable.ic_launcher);
+            fruitList.add(orange);
+            Fruit gakki =new Fruit("pple",R.drawable.ic_launcher);
+            fruitList.add(gakki);
+            Fruit pineapple =new Fruit("Aple",R.drawable.ic_launcher);
+            fruitList.add(pineapple);
+            Fruit cherry =new Fruit("Apple",R.drawable.ic_launcher);
+            fruitList.add(cherry);
+            Fruit grape =new Fruit("App",R.drawable.ic_launcher);
+            fruitList.add(grape);
+            Fruit pear =new Fruit("Ape",R.drawable.ic_launcher);
+            fruitList.add(pear);
+            Fruit water =new Fruit("Aple",R.drawable.ic_launcher);
+            fruitList.add(water);
+            Fruit straw =new Fruit("Ae",R.drawable.ic_launcher);
+            fruitList.add(straw);
+        }
+    }
+
+
+}
